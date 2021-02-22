@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>Hello world</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -20,6 +20,21 @@ function App() {
       </header>
     </div>
   );
+}
+//{getManPage("ls")}
+
+function getManPage(commandName) {
+  const { exec } = require("child_process");
+
+  exec("man " + commandName, (error, stdout, stderr) => {
+    if (error) {
+      return error.message;
+    }
+    if (stderr) {
+      return stderr;
+    }
+    return stdout;
+  });
 }
 
 export default App;
